@@ -21,7 +21,7 @@ class Body(ft.UserControl):
         self.is_downloaded = {}
         self.thread = None
         self.image_thumbnail = ft.Image(
-            src="./source/dummy.png",
+            src="./component/source/body.dummy.png",
             width=256,
         )
         self.input_url = ft.TextField(
@@ -207,7 +207,8 @@ class Body(ft.UserControl):
             return
         format_dict = self.createDownloadFormat()
         format_json = json.dumps(format_dict)
-        command = ["python", "dlqueue.py", format_json]
+        command = ["python", "-m", "dlqueue", format_json]
+        # command = ["python", "./dlqueue/dlqueue.py", format_json]
         subprocess.Popen(command)
 
     def option_quality_selected(self, event: ft.ControlEvent) -> None:

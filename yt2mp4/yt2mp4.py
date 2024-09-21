@@ -1,6 +1,6 @@
 import flet as ft
 
-from body import Body
+from component import Body
 
 def runApp() -> None:
     def app(page: ft.Page) -> None:
@@ -15,5 +15,8 @@ def runApp() -> None:
 
     ft.app(target=app)
 
-if __name__ == "__main__":
+def main():
     runApp()
+
+if __name__ == "__main__":
+    main()

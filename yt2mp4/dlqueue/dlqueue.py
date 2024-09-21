@@ -101,7 +101,7 @@ class Queue(ft.UserControl):
             self.showDialog(window_title, error_message)
 
     def showDialog(self, title: str, message: str) -> None:
-        command = ["python", "dialog.py", title, message]
+        command = ["python", "-m", "dialog", title, message]
         subprocess.Popen(command)
 
 def runQueue(format: dict) -> None:
@@ -118,12 +118,12 @@ def runQueue(format: dict) -> None:
 
     ft.app(target=lambda page: queue(page, format))
 
-if __name__ == "__main__":
-    def dict(json_data: str) -> dict:
-        return json.loads(json_data)
-    
+def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("format", type=dict)
+    parser.add_argument("format", type=lambda json_data: json.loads(json_data))
     args = parser.parse_args()
 
     runQueue(args.format)
+
+if __name__ == "__main__":
+    main()

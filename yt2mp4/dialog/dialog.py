@@ -53,10 +53,13 @@ def runDialog(title: str, message: str) -> None:
 
     ft.app(target=lambda page: dialog(page, title, message))
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("title")
     parser.add_argument("message")
     args = parser.parse_args()
 
     runDialog(args.title, args.message)
+
+if __name__ == "__main__":
+    main()
